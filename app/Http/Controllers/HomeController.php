@@ -41,8 +41,14 @@ class HomeController extends Controller
     {
         return view('home.homepage');
     }
+
     public function header()
     {
         return view('home.header');
+    }
+
+    public function travels()
+    {
+        return view('home.travel');
     }
 }
