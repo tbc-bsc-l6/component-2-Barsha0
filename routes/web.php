@@ -19,7 +19,18 @@ Route::get('/', [HomeController::class, 'homepage'])->name('home.homepage');
 
 Route::get('/travel', [HomeController::class, 'travels'])->name('home.travel');
 
-Route::get('/header', [HomeController::class, 'header']);
+Route::get('/sport', [HomeController::class, 'sports'])->name('home.sport');
+
+Route::get('/lifestyle', [HomeController::class, 'lifestyle'])->name('home.lifestyle');
+
+Route::get('/car', [HomeController::class, 'cars'])->name('home.car');
+
+Route::get('/login', [HomeController::class, 'login']);
+
+Route::get('/register', [HomeController::class, 'register']);
+
+Route::get('/header', [HomeController::class, 'header'])->name('home.header');
+
 
 
 Route::get('/home', [HomeController::class, 'index'])->middleware('auth')->name('home');
