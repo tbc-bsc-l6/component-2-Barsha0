@@ -30,4 +30,10 @@ class AuthorController extends Controller
         return redirect(route('post.view'))->with('message', 'Post updated sucessfully');
     }
 
+    public function delete_post(Post $post)
+    {
+        $post->delete();
+        return redirect(route('post.view'))->with('success', 'Post deleted successfuly');
+    }
+
 }

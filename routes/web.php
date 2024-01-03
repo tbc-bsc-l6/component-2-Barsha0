@@ -61,6 +61,8 @@ Route::get('/editpost/{post}/edit', [AuthorController::class, 'editpost'])->name
 
 Route::put('/editpost/{post}/update', [AuthorController::class, 'updatepost'])->name('post.update');
 
+Route::delete('/post/{post}/destroy', [AuthorController::class, 'delete_post'])->name('post.delete');
+
 
 
 

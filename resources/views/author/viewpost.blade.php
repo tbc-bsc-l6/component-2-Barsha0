@@ -29,7 +29,12 @@
                             </a>
                         </td>
                         <td class="border px-4 py-2 text-center">
-                            <form action="">
+
+                            <form action="{{ route('post.delete', ['post' => $post]) }}" method="POST">
+
+                                @csrf
+                                @method('delete')
+
                                 <button type="submit">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
