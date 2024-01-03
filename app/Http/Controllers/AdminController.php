@@ -26,7 +26,7 @@ class AdminController extends Controller
 
         $post = new POST;
         $post->title = $request->title;
-        $post->description = $request->discription;
+        $post->description = $request->description;
         $post->post_status = 'active';
 
         $post->user_id = $request->$user_id;

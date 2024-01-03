@@ -53,9 +53,14 @@ Route::get('/post_page', [AdminController::class, 'post_page']);
 
 Route::post('/add_post', [AdminController::class, 'add_post']);
 
-Route::get('/viewpost', [AuthorController::class, 'viewpost']);
+Route::get('/viewpost', [AuthorController::class, 'viewpost'])->name('post.view');
 
 Route::get('/editpost', [AuthorController::class, 'editpost']);
+
+Route::get('/editpost/{post}/edit', [AuthorController::class, 'editpost'])->name('post.edit');
+
+Route::put('/editpost/{post}/update', [AuthorController::class, 'updatepost'])->name('post.update');
+
 
 
 
