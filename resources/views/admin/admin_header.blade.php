@@ -1,20 +1,21 @@
-<x-app-layout>
     <x-slot name="header">
-        {{-- <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Admin Dashboard') }}
-        </h2> --}}
         <div class="container-fluid">
             <nav class="navbar navbar-inverse">
                 <div class="container-fluid">
                     <ul class="nav navbar-nav">
                         <li><a id="len1" class="hoverable" href="#">Home</a></li>
-                        <li><a id="len2" class="hoverable" href="{{url('post_page')}}">Post</a></li>
-                        <li><a id="len3" class="hoverable" href="#">Portfolio</a></li>
-                        <li><a id="len4" class="hoverable" href="#">Contact</a></li>
+                        @if (Auth::user()->usertype === 'admin')
+                            <li><a id="len3" class="hoverable" href="#">Post Management</a></li>
+                            <li><a id="len4" class="hoverable" href="#">User Management</a></li>
+                        @endif
+
+                        <li><a id="len2" class="hoverable" href="{{ url('post_page') }}">Add Post</a></li>
+                        <li><a id="len2" class="hoverable" href="{{ url('viewpost') }}">Your Post</a></li>
                     </ul>
                 </div>
             </nav>
         </div>
+
     </x-slot>
 
     <style>
@@ -107,7 +108,7 @@
             .navbar {
                 text-align: center !important;
                 float: none;
-                margin: 10px;
+                display: inline-block;
             }
         }
 
@@ -126,6 +127,7 @@
                 margin-left: 3em;
                 margin-right: 3em;
                 display: inline;
+
                 a {
                     transition: .5s color ease-in-out;
                 }
@@ -153,5 +155,3 @@
             });
         });
     </script>
-
-</x-app-layout>
