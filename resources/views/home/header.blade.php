@@ -3,12 +3,11 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                {{-- <a class="navbar-brand logo_h" href="index.html">
-                    <img src="img/logo.png" alt="">
-                </a> --}}
-                <button class="navbar-toggler" type="button" data-toggle="collapse"
-                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
+                <a class="navbar-brand logo_h" href="index.html">
+                    <h1>TheJournal</h1>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -42,31 +41,27 @@
                             <a class="nav-link" href="contact.html">Contact</a>
                         </li>
 
-                        @if(Route::has('login'))
+                        @if (Route::has('login'))
+                            @auth
 
-                        @auth
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                        Log Out
+                                    </a>
+                                </li>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">Log In</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('register') }}">Register</a>
+                                </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('logout') }}"
-                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Log Out
-                            </a>
-                        </li>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-
-
-                        @else
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('login')}}">Log In</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{route('register')}}">Register</a>
-                        </li>
-
-                        @endauth
+                            @endauth
                         @endif
 
                     </ul>
@@ -88,4 +83,3 @@
             </div>
         </nav>
     </div>
-
