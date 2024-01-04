@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 
+use App\Models\Post;
+
 use Illuminate\Support\Facades\Auth;
 
 
@@ -53,22 +55,26 @@ class HomeController extends Controller
 
     public function travels()
     {
-        return view('home.travel');
+        $posts = Post::all();
+        return view('home.travel',['posts' => $posts]);
     }
 
     public function cars()
     {
-        return view('home.car');
+        $posts = Post::all();
+        return view('home.car',['posts' => $posts]);
     }
 
     public function sports()
     {
-        return view('home.sport');
+        $posts = Post::all();
+        return view('home.sport',['posts' => $posts]);
     }
 
     public function lifestyle()
     {
-        return view('home.lifestyle');
+        $posts = Post::all();
+        return view('home.lifestyle',['posts' => $posts]);
     }
 
 
