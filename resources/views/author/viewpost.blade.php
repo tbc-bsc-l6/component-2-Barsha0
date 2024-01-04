@@ -8,41 +8,41 @@
         @include('admin.admin_header')
     </header>
 
-    <div class="mt-8 px-4"> <!-- Added padding to the left and right -->
-        <table class="min-w-full">
-            <thead>
-                <tr>
-                    <th class="text-center">Title</th>
-                    <th class="text-center">Description</th>
-                    <th class="text-center">Edit</th>
-                    <th class="text-center">Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($posts as $post)
+    <div class="mt-8 px-4">
+        <div style="margin: 0 200px;">
+            <table class="min-w-full" style="width: 100%;">
+                <thead>
                     <tr>
-                        <td class="border px-4 py-2 text-center">{{$post->title}}</td>
-                        <td class="border px-4 py-2 text-center">{{$post->description}}</td>
-                        <td class="border px-4 py-2 text-center">
-                            <a href="{{route('post.edit',['post' => $post])}}" class="text-blue-600 hover:underline mr-2">
-                                <i class="fas fa-edit text-white"></i>
-                            </a>
-                        </td>
-                        <td class="border px-4 py-2 text-center">
-
-                            <form action="{{ route('post.delete', ['post' => $post]) }}" method="POST">
-
-                                @csrf
-                                @method('delete')
-
-                                <button type="submit">
-                                    <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </form>
-                        </td>
+                        <th class="text-center">Title</th>
+                        <th class="text-center">Description</th>
+                        <th class="text-center">Edit</th>
+                        <th class="text-center">Delete</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($posts as $post)
+                        <tr>
+                            <td class="border px-4 py-2 text-center">{{ $post->title }}</td>
+                            <td class="border px-4 py-2 text-center">{{ $post->description }}</td>
+                            <td class="border px-4 py-2 text-center">
+                                <a href="{{ route('post.edit', ['post' => $post]) }}"
+                                    class="text-blue-600 hover:underline mr-2">
+                                    <i class="fas fa-edit text-white"></i>
+                                </a>
+                            </td>
+                            <td class="border px-4 py-2 text-center">
+                                <form action="{{ route('post.delete', ['post' => $post]) }}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <button type="submit">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </x-app-layout>
