@@ -7,16 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Post</title>
 
-    <!-- Link your CSS file or place the styles within a style tag in the head section -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
 
     <style>
-        /* Your CSS styles here */
         body {
-            background-color: #4D5CAD;
-            /* Blue */
             font-family: Arial, sans-serif;
             color: #ffffff;
-            /* White text on the dark background */
             margin: 0;
             padding: 0;
         }
@@ -24,11 +21,8 @@
         .card {
             width: 80%;
             max-width: 800px;
-            /* Set a maximum width */
             margin: 40px auto;
-            /* Center the card with top and bottom margin */
             padding: 30px;
-            /* Increased padding */
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             background-color: #ffffff;
@@ -134,6 +128,18 @@
                     <label for="description">Post Description</label>
                     <textarea id="description" name="description"></textarea>
                 </div>
+
+                <div class="form-group" style="color: black">
+                    <label for="category">Post Category</label>
+                    <select id="category" name="category" style="width: 100%">
+                        <option value="" disabled selected>Select Category</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Life Style">Life Style</option>
+                        <option value="Car">Car</option>
+                        <option value="Sports">Sports</option>
+                    </select>
+                </div>
+
 
                 <div class="form-group">
                     <label for="image">Add Image</label>

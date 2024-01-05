@@ -10,41 +10,10 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    public function post_page()
+    public function postmanagement()
     {
-        return view('author.post_page');
+        $posts = Post::all();
+        return view('admin.postmanagement',['posts' => $posts]);
     }
 
-    public function add_post(Request $request)
-    {
-
-        $user = Auth()->user();
-        $user_id = $user->id;
-        $name = $user->name;
-        $usertype = $user->usertype;
-
-
-        $post = new POST;
-        $post->title = $request->title;
-        $post->description = $request->description;
-        $post->post_status = 'active';
-
-        $post->user_id = $request->$user_id;
-        $post->name = $request->$name;
-        $post->usertype = $request->$usertype;
-
-
-        $image = $request->image;
-        if($image)
-        {
-            $imagename = time().'.'.$image->getClientOriginalExtension();
-            $request->image->move('postimage',$imagename);
-            $post->image = $imagename;
-        }
-
-        $post->save();
-
-        return redirect()->back()->with('message','Post added successfully.');
-
-    }
 }

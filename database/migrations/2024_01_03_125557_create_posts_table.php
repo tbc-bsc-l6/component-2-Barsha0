@@ -15,10 +15,11 @@ return new class extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->Longtext('description');
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->string('name')->nullable();
             $table->string('user_id')->nullable();
             $table->string('post_status')->nullable();
+            $table->string('category');
             $table->string('usertype')->nullable();
             $table->timestamps();
         });

@@ -49,9 +49,9 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/post_page', [AdminController::class, 'post_page']);
+Route::get('/post_page', [AuthorController::class, 'post_page']);
 
-Route::post('/add_post', [AdminController::class, 'add_post']);
+Route::post('/add_post', [AuthorController::class, 'add_post']);
 
 Route::get('/viewpost', [AuthorController::class, 'viewpost'])->name('post.view');
 
@@ -62,6 +62,11 @@ Route::get('/editpost/{post}/edit', [AuthorController::class, 'editpost'])->name
 Route::put('/editpost/{post}/update', [AuthorController::class, 'updatepost'])->name('post.update');
 
 Route::delete('/post/{post}/destroy', [AuthorController::class, 'delete_post'])->name('post.delete');
+
+Route::get('/postmanagement', [AdminController::class, 'postmanagement'])->name('post.postmanagement');
+
+
+
 
 
 

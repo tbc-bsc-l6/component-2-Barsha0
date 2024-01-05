@@ -21,6 +21,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
 </head>
 
 
@@ -46,12 +48,12 @@
                 @foreach ($posts as $post)
                     <div class="single_travel wow fadeIn" data-wow-duration="1s">
                         <figure>
-                            <img class="img-fluid" src="$post->image" alt="">
+                            <img class="img-fluid" src=" $post->image" alt="">
                         </figure>
                         <div class="overlay"></div>
                         <div class="text-wrap">
                             <h3>
-                                <a href="#">$post->category</a>
+                                <a href="#">{{ $post->category }}</a>
                             </h3>
                             <div class="blog-meta white d-flex justify-content-between align-items-center flex-wrap">
                                 <div class="meta">
@@ -61,21 +63,16 @@
                                     </a>
                                 </div>
                                 <div>
-                                    <a class="read_more" href="#">{{ $post->title }}
-                                    </a>
+                                    <a class="read_more" href="#">{{ $post->title }}</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 @endforeach
+
             </div>
     </section>
     <!--================ End Travel Category Area =================-->
-
-
-
-
-
 
     <footer class="footer-area section-gap">
         @include('home.footer')
