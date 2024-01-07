@@ -27,9 +27,9 @@
 
     </header>
 
-    <div class="card-class"><!-- Center the form vertically -->
+    <div class="card-class">
         <form method="post" action="{{ route('post.update', ['post' => $post]) }}" enctype="multipart/form-data"
-            class="max-w-3xl w-full bg-white shadow-md rounded-lg px-8 pt-8 pb-10 mt-6 mb-4" style="background-color:">
+            class="max-w-3xl w-full bg-white shadow-md rounded-lg px-8 pt-8 pb-10 mt-6 mb-4">
 
             @csrf
 
@@ -70,7 +70,8 @@
                     style="color: #4D5CAD;">Image:</label>
                 <input
                     class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                    id="image" type="file" name="image" placeholder="Image" value="{{ $post->image }}">
+                    id="image" type="file" name="image" placeholder="Image">
+                <img src="{{ asset('postimage/' . $post->image) }}" alt="Post Image" style="height: 100px; width: 150px;">
             </div>
 
             <div class="flex items-center justify-center"><!-- Adjusted the positioning -->

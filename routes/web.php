@@ -63,7 +63,26 @@ Route::put('/editpost/{post}/update', [AuthorController::class, 'updatepost'])->
 
 Route::delete('/post/{post}/destroy', [AuthorController::class, 'delete_post'])->name('post.delete');
 
+
+
+
 Route::get('/postmanagement', [AdminController::class, 'postmanagement'])->name('post.postmanagement');
+
+Route::get('/approve/{post}/update', [AdminController::class, 'approve_post'])->name('post.approve');
+
+Route::get('/decline/{post}/destroy', [AdminController::class, 'decline_post'])->name('post.decline');
+
+
+
+
+Route::get('/usermanagement', [AdminController::class, 'usermanagement'])->name('user.usermanagement');
+
+Route::get('/approve/{user}/update', [AdminController::class, 'approve_user'])->name('user.approve');
+
+Route::get('/decline/{user}/destroy', [AdminController::class, 'decline_user'])->name('user.decline');
+
+
+
 
 
 

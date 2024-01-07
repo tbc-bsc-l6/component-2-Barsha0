@@ -36,8 +36,8 @@
                 <ul class="nav navbar-nav">
                     <li><a id="len1" class="hoverable" href="{{ route('home') }}">Home</a></li>
                     @if (Auth::user()->usertype === 'admin')
-                        <li><a id="len3" class="hoverable" href="#">Post Management</a></li>
-                        <li><a id="len4" class="hoverable" href="#">User Management</a></li>
+                        <li><a id="len3" class="hoverable" href="{{route('post.postmanagement')}}">Post Management</a></li>
+                        <li><a id="len4" class="hoverable" href="{{route('user.usermanagement')}}">User Management</a></li>
                     @endif
 
                     <li><a id="len2" class="hoverable" href="{{ url('post_page') }}">Add Post</a></li>

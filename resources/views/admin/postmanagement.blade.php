@@ -51,20 +51,18 @@
                                         alt=""></td>
                                 <td class="px-10 py-2 text-center">{{ $post->post_status }}</td>
                                 <td class="px-4 py-2 text-center">
-                                    <a href="{{ route('post.edit', ['post' => $post]) }}"
+                                    <a href="{{ route('post.approve', ['post' => $post->id]) }}"
                                         class="text-blue-600 hover:underline mr-2">
                                         <i class="fas fa-check text-success"></i>
 
                                     </a>
                                 </td>
+
                                 <td class="px-4 py-2 text-center">
-                                    <form action="{{ route('post.delete', ['post' => $post]) }}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <button type="submit">
-                                            <i class="fas fa-times text-danger"></i>
-                                        </button>
-                                    </form>
+                                    <a href="{{ route('post.decline', ['post' => $post->id]) }}"
+                                        class="text-blue-600 hover:underline mr-2">
+                                        <i class="fas fa-times text-danger"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @endforeach

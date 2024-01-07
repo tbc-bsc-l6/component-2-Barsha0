@@ -54,26 +54,27 @@ class HomeController extends Controller
     }
 
     public function travels()
-    {
-        $posts = Post::all();
-        return view('home.travel',['posts' => $posts]);
-    }
+{
+    $posts = Post::where('category', 'travel')->get();
+    return view('home.travel', ['posts' => $posts]);
+}
 
-    public function cars()
-    {
-        $posts = Post::all();
-        return view('home.car',['posts' => $posts]);
-    }
+public function cars()
+{
+    $posts = Post::where('category', 'car')->get();
+    return view('home.car', ['posts' => $posts]);
+}
+
 
     public function sports()
     {
-        $posts = Post::all();
+        $posts = Post::where('category', 'sport')->get();
         return view('home.sport',['posts' => $posts]);
     }
 
     public function lifestyle()
     {
-        $posts = Post::all();
+        $posts = Post::where('category', 'lifestyle')->get();
         return view('home.lifestyle',['posts' => $posts]);
     }
 
