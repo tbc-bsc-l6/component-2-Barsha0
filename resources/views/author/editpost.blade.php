@@ -30,9 +30,7 @@
     <div class="card-class">
         <form method="post" action="{{ route('post.update', ['post' => $post]) }}" enctype="multipart/form-data"
             class="max-w-3xl w-full bg-white shadow-md rounded-lg px-8 pt-8 pb-10 mt-6 mb-4">
-
             @csrf
-
             @method('PUT')
 
             <div class="mb-5">
@@ -71,7 +69,8 @@
                 <input
                     class="shadow appearance-none border rounded w-full py-3 px-4 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     id="image" type="file" name="image" placeholder="Image">
-                <img src="{{ asset('postimage/' . $post->image) }}" alt="Post Image" style="height: 100px; width: 150px;">
+                <img src="{{ asset('postimage/' . $post->image) }}" alt="Post Image"
+                    style="height: 100px; width: 150px;">
             </div>
 
             <div class="flex items-center justify-center"><!-- Adjusted the positioning -->

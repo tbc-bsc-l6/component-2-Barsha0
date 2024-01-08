@@ -59,12 +59,16 @@ class AuthorController extends Controller
 
     public function updatepost(Post $post, Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'title' => 'required',
             'description' => 'required',
-            'image' => 'required',
-            'category' => 'required'
+            'category' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048' // Update image validation rules as needed
         ]);
+
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->category = $request->category;
 
         if ($request->hasFile('image')) {
             $image = $request->file('image');
@@ -73,12 +77,11 @@ class AuthorController extends Controller
             $post->image = $imageName;
         }
 
-        $post->title = $request->title;
-        $post->description = $request->description;
-        $post->category = $request->category;
-        $post->update($data);
-        return redirect(route('post.view'))->with('message', 'Post updated sucessfully');
+        $post->save();
+
+        return redirect()->route('post.view')->with('message', 'Post updated successfully');
     }
+
 
     public function delete_post(Post $post)
     {
