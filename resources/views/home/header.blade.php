@@ -1,3 +1,27 @@
+<head>
+
+    <style>
+        .reset-button {
+            margin: 10px;
+            padding: 5px;
+            border-radius: 5px;
+            border: 1px solid #4D5CAD;
+            background-color: #4D5CAD;
+            color: white;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        .reset-button:hover {
+            background-color: white;
+            color: #4D5CAD;
+            border-color: solid #4D5CAD;
+            border-style: solid;
+        }
+    </style>
+
+</head>
+
+
 <header class="header_area">
     <div class="main_menu">
         <nav class="navbar navbar-expand-lg navbar-light">
@@ -78,6 +102,9 @@
                             <button type="submit" class="search-icon">
                                 <i class="lnr lnr-magnifier"></i>
                             </button>
+                            <a href="{{ url('/travel') }}">
+                                <button class="reset-button" type="button">Reset</button>
+                            </a>
                         </li>
                     </ul>
                 </div>
