@@ -28,7 +28,7 @@
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <a class="navbar-brand logo_h" href="index.html">
-                    <h1>TheJournal</h1>
+                    <h1 style="color:#4D5CAD">TheJournal</h1>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -89,6 +89,7 @@
                         @endif
 
                     </ul>
+
                     <ul class="nav navbar-nav ml-auto search">
                         <li class="nav-item d-flex align-items-center mr-10">
                             <div class="menu-form">
@@ -102,9 +103,16 @@
                             <button type="submit" class="search-icon">
                                 <i class="lnr lnr-magnifier"></i>
                             </button>
-                            <a href="{{ url('/travel') }}">
-                                <button class="reset-button" type="button">Reset</button>
-                            </a>
+
+                            @if (Route::has('login'))
+                                @auth
+
+                                    <a href="{{ URL::current() }}">
+                                        <button class="reset-button" type="button">Reset</button>
+                                    </a>
+
+                                @endauth
+                            @endif
                         </li>
                     </ul>
                 </div>
@@ -112,3 +120,4 @@
         </nav>
 
     </div>
+</header>

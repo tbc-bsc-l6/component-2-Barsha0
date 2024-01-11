@@ -34,8 +34,7 @@ class AuthorController extends Controller
 
 
         $image = $request->image;
-        if ($image)
-        {
+        if ($image) {
             $imagename = time() . '.' . $image->getClientOriginalExtension();
             $request->image->move('postimage', $imagename);
             $post->image = $imagename;
@@ -47,9 +46,24 @@ class AuthorController extends Controller
 
     }
 
-    public function viewpost()
+    public function viewpost(Request $request)
     {
-        $posts = Post::all();
+        $sortBy = $request->input('sort');
+
+        // Fetch posts based on the selected sorting option
+        if ($sortBy == 'Category') {
+            $posts = Post::orderBy('category')->get();
+        } elseif ($sortBy == 'Date') {
+            $posts = Post::orderBy('created_at', 'desc')->get();
+        } elseif ($sortBy == 'Ascending') {
+            $posts = Post::orderBy('created_at')->get();
+        } elseif ($sortBy == 'Descending') {
+            $posts = Post::orderBy('created_at', 'desc')->get();
+        } else {
+            // Default sorting, you can adjust this based on your requirements
+            $posts = Post::all();
+        }
+
         return view('author.viewpost', ['posts' => $posts]);
     }
 

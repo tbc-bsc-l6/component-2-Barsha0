@@ -43,30 +43,52 @@
             color: #4D5CAD;
             border-color: #4D5CAD;
         }
+
+        .card-image{
+            height: 300px;
+            width: 500px;
+        }
     </style>
 
 
 </head>
 
 
-<body>
+<body style="background-color: #7079ad">
     <header class="header_area">
         @include('home.header')
     </header>
 
+    <section class="travel_category">
+        <div class="container">
+            <div class="row">
+
+
+                <div class="col-lg-12">
+                    <div class="main_title">
+                        <h1>Get your Game on..</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <section>
 
-            <div class="container" style="margin-top: 200px;">
+            <div class="container" style="margin-top: 30px;">
                 <div class="row">
                     @foreach ($posts as $index => $post)
                         <div class="col-lg-4 col-md-6 mb-4">
                             <div class="card animate__animated animate__fadeInUp"
                                 style="animation-delay: {{ $index * 100 }}ms;">
-                                <img src="postimage/{{ $post->image }}" class="card-img-top" alt="Post Image">
+                                <img src="postimage/{{ $post->image }}" class="card-image" alt="Post Image">
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $post->title }}</h5>
-                                    <p class="card-text">{{ $post->description }}</p>
+
+                                    <p class="text-gray-700" id="description{{ $post->id }}"></p>
+                                    <button onclick="toggleDescription({{ $post->id }})">Read More</button>
+                                    <p class="text-gray-700 hidden" id="full-description{{ $post->id }}">
+                                        {{ $post->description }}</p>
+
                                     <a href="#" class="btn btn-custom">Explore</a><!-- Updated button -->
                                 </div>
                                 <div class="card-footer">
@@ -110,9 +132,23 @@
             duration: 800,
             interval: 200
         });
+
+        function toggleDescription(productId) {
+            var description = document.getElementById('description' + productId);
+            var fullDescription = document.getElementById('full-description' + productId);
+            var buttonText = description.classList.toggle('expanded') ? 'Read Less' : 'Read More';
+            description.textContent = description.classList.contains('expanded') ? fullDescription.textContent : str_limit(
+                fullDescription.textContent, 20);
+            description.nextElementSibling.textContent = buttonText;
+        }
+
+        function str_limit(string, limit) {
+            return string.trim().split(/\s+/).slice(0, limit).join(' ') + '...';
+        }
     </script>
 
 
 
 </body>
+
 </html>

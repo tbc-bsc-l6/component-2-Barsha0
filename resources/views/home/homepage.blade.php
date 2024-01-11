@@ -22,7 +22,7 @@
 
 </head>
 
-<body>
+<body style= "background-color: whitesmoke">
     <header class="header_area">
         @include('home.header')
     </header>
