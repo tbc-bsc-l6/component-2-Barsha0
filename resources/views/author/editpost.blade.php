@@ -52,7 +52,7 @@
                     value="{{ $post->description }}">
             </div>
 
-            <div class="form-group" style="color:#4D5CAD">
+            {{-- <div class="form-group" style="color:#4D5CAD">
                 <label for="category">Post Category</label>
                 <select id="category" name="category" style="width: 100%">
                     <option value="" disabled selected>Select Category</option>
@@ -60,6 +60,17 @@
                     <option value="Life Style">Life Style</option>
                     <option value="Car">Car</option>
                     <option value="Sports">Sports</option>
+                </select>
+            </div> --}}
+
+            <div class="form-group" style="color:#4D5CAD">
+                <label for="category">Post Category</label>
+                <select id="category" name="category" style="width: 100%">
+                    <option value="" disabled>Select Category</option>
+                    <option value="Travel" {{ $post->category === 'Travel' ? 'selected' : '' }}>Travel</option>
+                    <option value="Life Style" {{ $post->category === 'Life Style' ? 'selected' : '' }}>Life Style</option>
+                    <option value="Car" {{ $post->category === 'Car' ? 'selected' : '' }}>Car</option>
+                    <option value="Sports" {{ $post->category === 'Sports' ? 'selected' : '' }}>Sports</option>
                 </select>
             </div>
 

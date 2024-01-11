@@ -70,7 +70,8 @@
                             <div class="menu-form">
                                 <form>
                                     <div class="form-group">
-                                        <input type="text" class="form-control" placeholder="Search here">
+                                        <input type="search" class="form-control" placeholder="Search post"
+                                            id="" name="search">
                                     </div>
                                 </form>
                             </div>
@@ -82,4 +83,5 @@
                 </div>
             </div>
         </nav>
+
     </div>

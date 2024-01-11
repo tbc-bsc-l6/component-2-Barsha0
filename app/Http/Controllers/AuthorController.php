@@ -34,7 +34,8 @@ class AuthorController extends Controller
 
 
         $image = $request->image;
-        if ($image) {
+        if ($image)
+        {
             $imagename = time() . '.' . $image->getClientOriginalExtension();
             $request->image->move('postimage', $imagename);
             $post->image = $imagename;

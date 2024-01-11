@@ -15,24 +15,16 @@ class HomeController extends Controller
 {
     public function index()
     {
-        if(Auth::id())
-        {
+        if (Auth::id()) {
             $usertype = Auth()->user()->usertype;
 
-            if($usertype=='user')
-            {
+            if ($usertype == 'user') {
                 return view('home.homepage');
-            }
-            else if($usertype=='admin')
-            {
+            } else if ($usertype == 'admin') {
                 return view('admin.adminhome');
-            }
-            else if($usertype=='author')
-            {
+            } else if ($usertype == 'author') {
                 return view('author.authorhome');
-            }
-            else
-            {
+            } else {
                 return redirect()->back();
             }
         }
@@ -53,29 +45,38 @@ class HomeController extends Controller
         return view('home.header');
     }
 
-    public function travels()
-{
-    $posts = Post::where('category', 'travel')->get();
-    return view('home.travel', ['posts' => $posts]);
-}
+    public function travels(Request $request)
+    {
+        $search = $request['search'] ?? "";
+        if ($search != "")
+        {
+            $posts = POST::where('title','Like','%'.$search.'%')->get();
+        }
+        else
+        {
+            $posts = Post::where('category', 'travel')->get();
+        }
 
-public function cars()
-{
-    $posts = Post::where('category', 'car')->get();
-    return view('home.car', ['posts' => $posts]);
-}
+        return view('home.travel', ['posts' => $posts, 'search'=> $search]);
+    }
+
+    public function cars()
+    {
+        $posts = Post::where('category', 'car')->get();
+        return view('home.car', ['posts' => $posts]);
+    }
 
 
     public function sports()
     {
-        $posts = Post::where('category', 'sport')->get();
-        return view('home.sport',['posts' => $posts]);
+        $posts = Post::where('category', 'Sports')->get();
+        return view('home.sport', ['posts' => $posts]);
     }
 
     public function lifestyle()
     {
-        $posts = Post::where('category', 'lifestyle')->get();
-        return view('home.lifestyle',['posts' => $posts]);
+        $posts = Post::where('category', 'Life Style')->get();
+        return view('home.lifestyle', ['posts' => $posts]);
     }
 
 

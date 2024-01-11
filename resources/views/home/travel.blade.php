@@ -69,7 +69,7 @@
 
         <section>
 
-            <div class="container">
+            <div class="container" style="margin-top: 200px;">
                 <div class="row">
                     @foreach ($posts as $index => $post)
                         <div class="col-lg-4 col-md-6 mb-4">
